@@ -110,21 +110,11 @@ Data was preprocessed (tokenized, stopwords removed, lemmatized) before training
 
 ## 🚀 Running the API & Web UI
 
-1. **Activate your virtual environment** (if not already):
-   ```bash
-   cd "D:/Research/Topics/Future Interns/Task 3/src"
-   .venv\Scripts\activate     # Windows
-   # source .venv/bin/activate # macOS/Linux
-   ```
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. **Start the server**:
+1. **Start the server**:
    ```bash
    uvicorn app:app --reload
    ```
-4. **Open** your browser at [http://localhost:8000/](http://localhost:8000/) to view the chat UI.
+2. **Open** your browser at [http://localhost:8000/](http://localhost:8000/) to view the chat UI.
 
 ---
 
