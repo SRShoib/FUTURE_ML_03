@@ -4,21 +4,21 @@ from tensorflow.keras import layers
 import pandas as pd
 import pickle
 
-# 1. Load preprocessed data
+# Load preprocessed data
 df = pd.read_pickle(r'D:\Research\Topics\Future Interns\FUTURE_ML_03\data\processed\customer_support_tickets_preprocessed.pkl')
 texts = df['tokens'].map(" ".join).tolist()   # list[str]
 labels = df['intent'].astype('category')
 label_index = dict(enumerate(labels.cat.categories))
 y = tf.keras.utils.to_categorical(labels.cat.codes)  # np.ndarray, shape (N, num_intents)
 
-# 2. TextVectorization
+# TextVectorization
 vectorizer = layers.TextVectorization(
     max_tokens=10000,
     output_sequence_length=50
 )
 vectorizer.adapt(texts)
 
-# 3. Build model
+# Build model
 model = tf.keras.Sequential([
     vectorizer,
     layers.Embedding(input_dim=10000, output_dim=64),
@@ -34,7 +34,7 @@ model.compile(
     metrics=['accuracy']
 )
 
-# 4. Create a tf.data.Dataset and split into train/val
+# Create a tf.data.Dataset and split into train/val
 dataset = tf.data.Dataset.from_tensor_slices((texts, y))
 dataset = dataset.shuffle(buffer_size=len(texts), seed=42)  # shuffle all
 
@@ -52,22 +52,21 @@ val_ds = (
     .prefetch(tf.data.AUTOTUNE)
 )
 
-# 5. Train
+# Train
 history = model.fit(
     train_ds,
     validation_data=val_ds,
     epochs=30
 )
 
-# 6. Save
-# Make sure the folder exists
+# Save
 save_dir = r'D:\Research\Topics\Future Interns\FUTURE_ML_03\saved_models'
 os.makedirs(save_dir, exist_ok=True)
 
-# 6a. Save in native Keras format (recommended)
+# Save in native Keras format (recommended)
 model.save(os.path.join(save_dir, 'intent_classifier.keras'))
 
-# 6b. Save your label map
+# Save your label map
 with open(os.path.join(save_dir, 'label_index.pkl'), 'wb') as f:
     pickle.dump(label_index, f)
 
