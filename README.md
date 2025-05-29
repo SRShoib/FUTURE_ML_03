@@ -55,17 +55,26 @@ Customer support teams often get inundated with repetitive questions—order sta
 ## 📂 Directory Structure
 
 ```
-Task 3/
-├─ saved_models/                # Trained model & label index
-│  ├─ intent_classifier.keras
-│  └─ label_index.pkl
-└─ src/
-   ├─ app.py                   # FastAPI application
-   ├─ static/                  # Web UI assets
-   │  ├─ index.html
-   │  ├─ styles.css
-   │  └─ script.js
-   └─ data_preprocessing.py    # (Optional) preprocessing scripts
+FUTURE_ML_03/
+├── data/
+│   ├── raw/  
+│   │   └── customer_support_tickets.csv           # Original export of chat/FAQ logs
+│   ├── processed/  
+│   │   └── customer_support_tickets_preprocessed.pkl
+│
+├── saved_models/
+│   ├── intent_classifier/          # Saved TensorFlow model directory
+│   └── label_index.pkl             # Pickled mapping from class indices to intent names
+│
+├── src/                            # Application code
+│   ├── data_preprocessing.py       # Text cleaning & tokenization
+│   ├── intent_model.py             # Model definition & training script
+│   ├── app.py                      # FastAPI webhook server
+│   ├── analytics.py                # Pandas + Matplotlib analysis scripts
+│   └── static/                     # Web UI assets
+│       ├─ index.html
+│       ├─ styles.css
+│       └─ script.js
 ```
 
 ---
