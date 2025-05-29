@@ -1,5 +1,3 @@
-// src/static/script.js
-
 const API_URL = "/predict_intent";
 
 const messagesEl     = document.getElementById("messages");
@@ -7,7 +5,7 @@ const quickRepliesEl = document.getElementById("quick-replies");
 const inputEl        = document.getElementById("user-input");
 const sendBtn        = document.getElementById("send-btn");
 
-// Map of intent → friendly reply (underscore only keys)
+// Map of intent → friendly reply
 const intentResponses = {
   Order_Status:    "Sure—please share your Order ID, and I’ll check its status right away.",
   Return_Policy:   "Our return policy allows returns within 30 days in the original packaging.",
