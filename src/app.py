@@ -16,14 +16,14 @@ STATIC_DIR = SRC_DIR  / 'static'
 MODEL_PATH = MODEL_DIR / 'intent_classifier.keras'
 LABEL_PATH = MODEL_DIR / 'label_index.pkl'
 
-# 1. Load model & labels
+# Load model & labels
 if not MODEL_PATH.exists():
     raise FileNotFoundError(f"Model not found at {MODEL_PATH}")
 model = tf.keras.models.load_model(MODEL_PATH)
 with open(LABEL_PATH, 'rb') as f:
     label_index = pickle.load(f)
 
-# 2. NLP setup
+# NLP setup
 nltk.download('stopwords')
 nltk.download('wordnet')
 STOPWORDS = set(stopwords.words('english'))
@@ -41,7 +41,6 @@ def preprocess_text(text: str) -> str:
     ]
     return " ".join(cleaned)
 
-# 3. FastAPI app
 app = FastAPI()
 
 # Serve static files at /static
