@@ -81,7 +81,10 @@ FUTURE_ML_03/
 
 ## 📖 Dataset
 
-Used a CSV of historical customer support tickets (`customer_support_tickets.csv`), containing columns such as:
+- Download the Customer Support Ticket Dataset from [Kaggle](https://www.kaggle.com/datasets/waseemalastal/customer-support-ticket-dataset)
+   - Place the CSV file in the project root directory as `customer_support_tickets.csv`
+
+This CSV of historical customer support tickets (`customer_support_tickets.csv`), containing columns such as:
 
 - **`utterance`**: the raw customer message  
 - **`intent`**: the labeled intent category
