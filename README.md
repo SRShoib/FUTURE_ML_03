@@ -54,3 +54,88 @@ Customer support teams often get inundated with repetitive questions—order sta
 
 ## 📂 Directory Structure
 
+FUTURE_ML_03/
+├── data/
+│   ├── raw/  
+│   │   └── customer_support_tickets.csv           # Original export of chat/FAQ logs
+│   ├── processed/  
+│   │   └── customer_support_tickets_preprocessed.pkl
+│
+├── saved_models/
+│   ├── intent_classifier/          # Saved TensorFlow model directory
+│   └── label_index.pkl             # Pickled mapping from class indices to intent names
+│
+├── src/                            # Application code
+│   ├── data_preprocessing.py       # Text cleaning & tokenization
+│   ├── intent_model.py             # Model definition & training script
+│   ├── app.py                      # FastAPI webhook server
+│   ├── analytics.py                # Pandas + Matplotlib analysis scripts
+│   └── static/                     # Web UI assets
+│       ├─ index.html
+│       ├─ styles.css
+│       └─ script.js
+│
+
+
+---
+
+## 📖 Dataset
+
+- Download the Customer Support Ticket Dataset from [Kaggle](https://www.kaggle.com/datasets/waseemalastal/customer-support-ticket-dataset)
+   - Place the CSV file in the project root directory as `customer_support_tickets.csv`
+
+This CSV of historical customer support tickets (`customer_support_tickets.csv`), containing columns such as:
+
+- **`utterance`**: the raw customer message  
+- **`intent`**: the labeled intent category
+
+Data was preprocessed (tokenized, stopwords removed, lemmatized) before training a simple feed-forward or LSTM model in Keras.
+
+---
+
+## 🏋️ Model Training
+
+1. **Preprocess text** (in `data_preprocessing.py`):
+   ```bash
+   python data_preprocessing.py
+   ```
+2. **Train intent classifier** (in `intent_model.py`):
+   ```bash
+   python intent_model.py
+   ```
+   - The model is saved in **Keras** format to `saved_models/intent_classifier.keras`.  
+   - Label mapping (intent → index) saved as `label_index.pkl`.
+
+---
+
+## 🚀 Running the API & Web UI
+
+   ```
+1. **Start the server**:
+   ```bash
+   uvicorn app:app --reload
+   ```
+2. **Open** your browser at [http://localhost:8000/](http://localhost:8000/) to view the chat UI.
+
+---
+
+## 🔧 Usage
+
+- **Free-text**: Type any question (e.g. “Where’s my order?”, “I need a refund.”) and hit Enter or click the ➤ button.  
+- **Quick Replies**: Click one of the suggested buttons (Order Status, Return Policy, Technical Issue, Refund request).  
+- **Response**: The bot displays a pre-configured answer with a confidence score.
+
+---
+
+## 🚧 Future Improvements
+
+- **Add more intents** (e.g. shipping times, account management).  
+- **Dynamic response generation** using slot-filling or a retrieval-based approach.  
+- **Database integration** for real-time order lookups.  
+- **Authentication** and user context (session tracking).  
+- **Dockerize** the entire app for easy deployment.
+
+---
+
+
+*Happy coding!*
