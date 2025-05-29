@@ -16,7 +16,6 @@ Built with TensorFlow/Keras for intent classification, FastAPI for the backend A
 7. [Running the API & Web UI](#running-the-api--web-ui)  
 8. [Usage](#usage)  
 9. [Future Improvements](#future-improvements)  
-10. [License](#license)  
 
 ---
 
@@ -136,10 +135,5 @@ Data was preprocessed (tokenized, stopwords removed, lemmatized) before training
 
 ---
 
-## ⚖️ License
-
-This project is licensed under the [MIT License](LICENSE). Feel free to reuse and adapt!
-
----
 
 *Happy coding!*
