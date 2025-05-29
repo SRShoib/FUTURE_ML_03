@@ -76,6 +76,16 @@ FUTURE_ML_03/
 │       └─ script.js
 │
 
+customer-support-chatbot/
+├── app.py                        # Flask backend application
+├── static/
+│   ├── styles.css                # CSS styling for the web interface
+│   └── script.js                 # JavaScript for frontend interactivity
+├── templates/
+│   └── index.html                # HTML template for the web interface
+├── model.pkl                     # Saved model (generated after training)
+├── customer_support_tickets.csv  # Dataset (already included)
+└── requirements.txt              # Python dependencies
 
 ---
 
