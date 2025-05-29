@@ -5,7 +5,6 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import TreebankWordTokenizer
 import pandas as pd
 
-# 1. Download only the corpora we still need
 nltk.download('stopwords')
 nltk.download('wordnet')
 
